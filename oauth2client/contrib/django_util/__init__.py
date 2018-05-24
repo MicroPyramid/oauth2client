@@ -230,7 +230,7 @@ import importlib
 
 import django.conf
 from django.core import exceptions
-from django.core import urlresolvers
+from django.urls import reverse
 from six.moves.urllib import parse
 
 from oauth2client import clientsecrets
@@ -408,7 +408,7 @@ def _redirect_with_params(url_name, *args, **kwargs):
     Returns:
         A properly formatted redirect string.
     """
-    url = urlresolvers.reverse(url_name, args=args)
+    url = reverse(url_name, args=args)
     params = parse.urlencode(kwargs, True)
     return "{0}?{1}".format(url, params)
 
